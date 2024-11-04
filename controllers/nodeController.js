@@ -1,7 +1,7 @@
 const neo4j = require('neo4j-driver');
 
 // Configuración del driver de Neo4j
-const driver = neo4j.driver("bolt://127.0.0.1:7687", neo4j.auth.basic("neo4j", "password")); // Cambié localhost a 127.0.0.1
+const driver = neo4j.driver("bolt://127.0.0.1:7687", neo4j.auth.basic("neo4j", "password")); 
 const session = driver.session();
 
 const getNodesAndEdges = async (req, res) => {
