@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neo4j Nodes and Relationships</title>
+  <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    #mynetwork {
+      width: 100%;
+      height: 600px;
+      border: 1px solid lightgray;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nodos y Relaciones en Neo4j</h1>
+  <div id="mynetwork"></div>
+
+  <script type="text/javascript">
+    // Obtener nodos y aristas desde el servidor
+    const nodes = new vis.DataSet(<%- nodes %>);  // Asegúrate de que esto es correcto
+    const edges = new vis.DataSet(<%- edges %>);  // Asegúrate de que esto es correcto
+
+    // Crear una red
+    const container = document.getElementById('mynetwork');
+    const data = {
+      nodes: nodes,
+      edges: edges
+    };
+    const options = {
+      nodes: {
+        shape: 'dot',
+        size: 16,
+        font: {
+          size: 14,
+        }
+      },
+      edges: {
+        width: 2,
+        arrows: 'to',
+        font: {
+          align: 'middle'
+        }
+      }
+    };
+    const network = new vis.Network(container, data, options);
+  </script>
+</body>
+</html>
